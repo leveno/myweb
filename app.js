@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var lessMiddleware = require('less-middleware')
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -20,6 +22,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//增加Less编译
+app.use(lessMiddleware(path.join(__dirname, 'public'),
+  {
+    preprocess: {
+      path: function(pathname, req) {
+         return pathname.replace(/^\/less\//, '/stylesheets');
+        }
+    }
+  }));
 //静态文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 
