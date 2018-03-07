@@ -14,6 +14,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+//[jade](http://jade-lang.com/)
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -22,15 +23,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 //增加Less编译
-app.use(lessMiddleware(path.join(__dirname, 'public'),
-  {
-    preprocess: {
-      path: function(pathname, req) {
-         return pathname.replace(/^\/less\//, '/stylesheets');
-        }
-    }
-  }));
+//[less-middleware](https://www.npmjs.com/package/less-middleware)
+app.use(lessMiddleware(path.join(__dirname, 'public')));
+
 //静态文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 
