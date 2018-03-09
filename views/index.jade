@@ -1,15 +1,28 @@
 extends layout
 
 block header
-  include ./layout/header.jade
+   include ./layout/header.jade
 
 block banner
-  include ./layout/banner.jade
+   include ./layout/banner.jade
 
 block content
-  div.contain
-  h1= title
-  p Welcome to #{title}
+   div.content
+      div.contain
+          ul.box
+              li.color1
+                a(href="#")
+                    h3 网站
+                    span 官网建设、论坛、电子商城
+              li.color2
+                a(href="#")
+                    h3 公众号
+                    span 微信、支付宝、QQ
+              li.color3
+                a(href="#")
+                    h3 小程序
+                    span 微信、支付宝、QQ
+              div.clear
 
 block footer
   include ./layout/footer.jade
