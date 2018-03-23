@@ -1,29 +1,20 @@
-extends layout
+extends web/layout
+
+block css
+    include web/layout/css.jade
+
+block javascript
+    include web/layout/javascript.jade
 
 block header
-   include ./layout/header.jade
+   include web/layout/header.jade
 
 block banner
-   include ./layout/banner.jade
+   include web/layout/banner.jade
 
 block content
-   div.content
-      div.contain
-          ul.box
-              li.color1
-                a(href="#")
-                    h3 网站
-                    span 官网建设、论坛、电子商城
-              li.color2
-                a(href="#")
-                    h3 公众号
-                    span 微信、支付宝、QQ
-              li.color3
-                a(href="#")
-                    h3 小程序
-                    span 微信、支付宝、QQ
-              div.clear
+    include web/layout/content.jade
 
 block footer
-  include ./layout/footer.jade
+  include web/layout/footer.jade
   
